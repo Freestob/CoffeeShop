@@ -23,20 +23,37 @@ namespace CoffeeShopApplicationLab.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+          /*  HttpCookie cookie;
+            if (Request.Cookies["CounterCookie"]==null)
+            {
+                cookie = new HttpCookie("CounterCookie");
+                cookie.Value = "0";
+                cookie.Expires = DateTime.UtcNow.AddYears(1);
+            }
+            else
+            {
+                cookie = Request.Cookies["CounterCookie"];
+            }
+
+            Counter = int.Parse(cookie.Value);
+            Counter += 1;
+            cookie.Value = Counter.ToString();
+            Response.Cookies.Add(cookie);
+            ViewBag.Message = $"Counter = (Counter)";*/
 
             return View();
         }
 
-        public ActionResult Registerer(Registerer model)
+        public ActionResult Registerer()
         {
-            return View(model);
+            return View();
         }
-        [HttpPost]
-        public ActionResult UserSuccess(string firstName)
+        public ActionResult UserRegistered(string firstName)
         {
             ViewBag.FirstName = firstName;
             return View();
         }
+
+        
     }
 }
