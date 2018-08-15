@@ -28,17 +28,11 @@ namespace CoffeeShopApplicationLab.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Register(Registerer model)
+        public ActionResult Registerer(Registerer model)
         {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction(nameof(UserSuccess), new { FirstName = model.FirstName, });
-            }
-
             return View(model);
         }
-
+        [HttpPost]
         public ActionResult UserSuccess(string firstName)
         {
             ViewBag.FirstName = firstName;
