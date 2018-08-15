@@ -16,14 +16,17 @@ namespace CoffeeShopApplicationLab.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome to the coffee shop.";
+
+            
 
             return View();
         }
 
         public ActionResult Contact()
         {
-          /*  HttpCookie cookie;
+            int Counter = 0;
+          HttpCookie cookie;
             if (Request.Cookies["CounterCookie"]==null)
             {
                 cookie = new HttpCookie("CounterCookie");
@@ -39,7 +42,7 @@ namespace CoffeeShopApplicationLab.Controllers
             Counter += 1;
             cookie.Value = Counter.ToString();
             Response.Cookies.Add(cookie);
-            ViewBag.Message = $"Counter = (Counter)";*/
+            ViewBag.Message = $"Counter = (Counter)";
 
             return View();
         }
@@ -51,6 +54,27 @@ namespace CoffeeShopApplicationLab.Controllers
         public ActionResult UserRegistered(string firstName)
         {
             ViewBag.FirstName = firstName;
+
+
+            /*int lCounter = 0;
+            HttpCookie lCookie;
+            if (Request.Cookies["LightCounterCookie"]== null)
+            {
+                lCookie = new HttpCookie("LightCounterCookie");
+                lCookie.Value = "0";
+                lCookie.Expires = DateTime.UtcNow.AddYears(1);
+            }
+            else
+            {
+                lCookie = Request.Cookies["LightCounterCookie"];
+            }
+
+            lCounter = int.Parse(lCookie.Value);
+            lCounter += 1;
+            lCookie.Value = lCounter.ToString();
+            Response.Cookies.Add(lCookie);
+            ViewBag.Message = $"Counter = (lCounter)";
+            */
             return View();
         }
 
