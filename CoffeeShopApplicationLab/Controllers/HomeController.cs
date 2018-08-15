@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CoffeeShopApplicationLab.Models;
 
 namespace CoffeeShopApplicationLab.Controllers
 {
@@ -27,10 +28,20 @@ namespace CoffeeShopApplicationLab.Controllers
             return View();
         }
 
-        public ActionResult Registerer()
+        [HttpPost]
+        public ActionResult Register(Registerer model)
         {
-            ViewBag.Message = "Register.";
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(nameof(UserSuccess), new { FirstName = model.FirstName, });
+            }
 
+            return View(model);
+        }
+
+        public ActionResult UserSuccess(string firstName)
+        {
+            ViewBag.FirstName = firstName;
             return View();
         }
     }
