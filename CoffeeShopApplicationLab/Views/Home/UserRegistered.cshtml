@@ -7,21 +7,10 @@
 
 @using (Html.BeginForm("UserRegistered", "Home", FormMethod.Post))
 {
-<div>
-    <form>
-        <label for="Title">What coffee would you like:</label>
-        <br />
-        <select title="Title Select">
-            <option value="">Please choose an option </option>
-            <option value="Dark">Dark</option>
-            <option value="Light">Light</option>
-        </select>
+    <h2>@ViewBag.DoAgain</h2>
 
-        <br />
-        <button type="submit" class="btn btn-primary">Submit &raquo;</button>
-    </form>
-
-</div>
+    <p><a href="/Home/Registerer" class="btn btn-primary btn-lg">Buy Coffee &raquo;</a></p>
+    <p><a href="/Home/Registerer" class="btn btn-primary btn-lg">Go home &raquo;</a></p>
 }
 
 

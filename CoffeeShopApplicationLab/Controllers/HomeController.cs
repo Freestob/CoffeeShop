@@ -54,27 +54,35 @@ namespace CoffeeShopApplicationLab.Controllers
         public ActionResult UserRegistered(string firstName)
         {
             ViewBag.FirstName = firstName;
+            ViewBag.DoAgain = "Would you like to add more coffee or checkout and leave?";
 
 
-            /*int lCounter = 0;
-            HttpCookie lCookie;
-            if (Request.Cookies["LightCounterCookie"]== null)
+            
+            
+            return View();
+        }
+
+        public ActionResult BuyCoffee()
+        {
+            int CoffeeCounter = 0;
+            HttpCookie CoffeeCookie;
+            if (Request.Cookies["CoffeeCounterCookie"] == null)
             {
-                lCookie = new HttpCookie("LightCounterCookie");
-                lCookie.Value = "0";
-                lCookie.Expires = DateTime.UtcNow.AddYears(1);
+                CoffeeCookie = new HttpCookie("CoffeeCounterCookie");
+                CoffeeCookie.Value = "0";
+                CoffeeCookie.Expires = DateTime.UtcNow.AddYears(1);
             }
             else
             {
-                lCookie = Request.Cookies["LightCounterCookie"];
+                CoffeeCookie = Request.Cookies["CoffeeCounterCookie"];
             }
 
-            lCounter = int.Parse(lCookie.Value);
-            lCounter += 1;
-            lCookie.Value = lCounter.ToString();
-            Response.Cookies.Add(lCookie);
-            ViewBag.Message = $"Counter = (lCounter)";
-            */
+            CoffeeCounter = int.Parse(CoffeeCookie.Value);
+            CoffeeCounter += 1;
+            CoffeeCookie.Value = CoffeeCounter.ToString();
+            Response.Cookies.Add(CoffeeCookie);
+            ViewBag.Message = $"Counter = (CoffeeCookie)";
+
             return View();
         }
 
