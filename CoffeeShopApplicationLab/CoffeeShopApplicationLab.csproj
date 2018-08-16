@@ -195,6 +195,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\UserRegistered.cshtml" />
     <Content Include="Views\Home\Registerer.cshtml" />
+    <Content Include="Views\Home\BuyCoffee.cshtml" />
+    <Content Include="Views\Home\DeleteEverything.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

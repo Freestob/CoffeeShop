@@ -25,24 +25,7 @@ namespace CoffeeShopApplicationLab.Controllers
 
         public ActionResult Contact()
         {
-            int Counter = 0;
-          HttpCookie cookie;
-            if (Request.Cookies["CounterCookie"]==null)
-            {
-                cookie = new HttpCookie("CounterCookie");
-                cookie.Value = "0";
-                cookie.Expires = DateTime.UtcNow.AddYears(1);
-            }
-            else
-            {
-                cookie = Request.Cookies["CounterCookie"];
-            }
-
-            Counter = int.Parse(cookie.Value);
-            Counter += 1;
-            cookie.Value = Counter.ToString();
-            Response.Cookies.Add(cookie);
-            ViewBag.Message = $"Counter = (Counter)";
+          
 
             return View();
         }
@@ -51,19 +34,31 @@ namespace CoffeeShopApplicationLab.Controllers
         {
             return View();
         }
-        public ActionResult UserRegistered(string firstName)
+        public ActionResult UserRegistered(string firstName, string favoriteCoffee)
         {
             ViewBag.FirstName = firstName;
-            ViewBag.DoAgain = "Would you like to add more coffee or checkout and leave?";
+            ViewBag.FavoriteCoffee = favoriteCoffee + " coffee";
+            ViewBag.DoAgain = "Would you like to add more coffee";
 
+            HttpCookie CoffeeCookie;
+            if (Request.Cookies["FavoriteCoffee"] == null)
+            {
+                CoffeeCookie = new HttpCookie("FavoriteCoffee");
+                CoffeeCookie.Value = favoriteCoffee;
+                CoffeeCookie.Expires = DateTime.UtcNow.AddYears(1);
+            }
+            else
+            {
+                CoffeeCookie = Request.Cookies["FavoriteCoffee"];
+            }
 
-            
-            
             return View();
         }
 
         public ActionResult BuyCoffee()
         {
+            var favoriteCoffee = new HttpCookie("FavoriteCoffee");
+
             int CoffeeCounter = 0;
             HttpCookie CoffeeCookie;
             if (Request.Cookies["CoffeeCounterCookie"] == null)
@@ -81,9 +76,24 @@ namespace CoffeeShopApplicationLab.Controllers
             CoffeeCounter += 1;
             CoffeeCookie.Value = CoffeeCounter.ToString();
             Response.Cookies.Add(CoffeeCookie);
-            ViewBag.Message = $"Counter = (CoffeeCookie)";
+
+
+            ViewBag.Message = $"You want to buy " + CoffeeCounter;
 
             return View();
+        }
+        public ActionResult DeleteEverything()
+        {
+
+            var CoffeeCounterCookie = new HttpCookie("CoffeeCounterCookie");
+            CoffeeCounterCookie.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(CoffeeCounterCookie);
+
+            var FavoriteCoffee = new HttpCookie("FavoriteCoffee");
+            FavoriteCoffee.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(FavoriteCoffee);
+
+            return RedirectToAction("Index","Home");
         }
 
         

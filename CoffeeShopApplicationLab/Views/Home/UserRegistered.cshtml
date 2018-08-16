@@ -4,13 +4,14 @@
 }
 
 <h2>Hello, @ViewBag.FirstName</h2>
+<h2>You like @ViewBag.FavoriteCoffee</h2>
 
 @using (Html.BeginForm("UserRegistered", "Home", FormMethod.Post))
 {
     <h2>@ViewBag.DoAgain</h2>
 
-    <p><a href="/Home/Registerer" class="btn btn-primary btn-lg">Buy Coffee &raquo;</a></p>
-    <p><a href="/Home/Registerer" class="btn btn-primary btn-lg">Go home &raquo;</a></p>
+    <p><a href="/Home/BuyCoffee" class="btn btn-primary btn-lg">Buy coffee &raquo;</a></p>
+    
 }
 
 

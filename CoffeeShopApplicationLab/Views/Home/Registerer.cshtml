@@ -47,21 +47,17 @@
         </div>
     </div>
 
-    <div>
-        <form>
-            <label for="Title">What coffee would you like:</label>
-            <br />
-            <select title="Title Select">
-                <option value="">Please choose an option </option>
-                <option value="Dark">Dark</option>
-                <option value="Light">Light</option>
-            </select>
-
-            <br />
-            <button type="submit" class="btn btn-primary">Submit &raquo;</button>
-        </form>
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.FavoriteCoffee, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FavoriteCoffee, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FavoriteCoffee, "", new { @class = "text-danger" })
+        </div>
     </div>
+
+
+
+    
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

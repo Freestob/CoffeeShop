@@ -29,5 +29,7 @@ namespace CoffeeShopApplicationLab.Models
         [RegularExpressionAttribute(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$", ErrorMessage = "Password must contain one uppercase, one lowercase, one number, and one special character")]
         public string Password { get; set; }
 
+        [Required]
+        public string FavoriteCoffee { get; set; }
     }
 }
