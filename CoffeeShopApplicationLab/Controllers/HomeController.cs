@@ -57,7 +57,6 @@ namespace CoffeeShopApplicationLab.Controllers
 
         public ActionResult BuyCoffee()
         {
-            var favoriteCoffee = new HttpCookie("FavoriteCoffee");
 
             int CoffeeCounter = 0;
             HttpCookie CoffeeCookie;
@@ -76,9 +75,11 @@ namespace CoffeeShopApplicationLab.Controllers
             CoffeeCounter += 1;
             CoffeeCookie.Value = CoffeeCounter.ToString();
             Response.Cookies.Add(CoffeeCookie);
+            
+            HttpCookie favoriteCoffee = Request.Cookies["CoffeeCookie"];
+            
 
-
-            ViewBag.Message = $"You want to buy " + CoffeeCounter;
+            ViewBag.Message = $"You want to buy " + CoffeeCounter + favoriteCoffee;
 
             return View();
         }
